@@ -1,0 +1,80 @@
+backend:
+  name: github
+  repo: maranatherruhode/Angels-school
+  branch: main
+media_folder: images/uploads
+public_folder: /images/uploads
+collections:
+  - name: settings
+    label: Settings
+    files:
+      - name: settings
+        label: School Settings
+        file: content/settings.json
+        fields:
+          - {name: phone, label: School phone, widget: string}
+          - {name: whatsapp, label: WhatsApp number, widget: string}
+          - {name: email, label: Email, widget: string}
+          - {name: address, label: Address, widget: string}
+          - {name: facebook, label: Facebook link, widget: string, required: false}
+          - {name: maps_link, label: Google Maps link, widget: string, required: false}
+          - {name: google_business, label: Google Business Profile link, widget: string, required: false}
+          - {name: fees_pdf, label: Fees PDF, widget: file, required: false}
+          - {name: cover_photo, label: Cover photo (home page), widget: image, required: false}
+  - name: news
+    label: News
+    files:
+      - name: news
+        label: News
+        file: content/news.json
+        fields:
+          - name: items
+            label: News items
+            label_singular: News item
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - {name: title, label: Title, widget: string}
+              - {name: date, label: Date, widget: string, hint: "Format YYYY-MM-DD, e.g. 2026-11-21"}
+              - {name: photo, label: Photo, widget: image, required: false}
+              - {name: story, label: Story, widget: text}
+  - name: gallery
+    label: Gallery
+    files:
+      - name: gallery
+        label: Gallery
+        file: content/gallery.json
+        fields:
+          - name: items
+            label: Photos
+            label_singular: Photo
+            widget: list
+            summary: "{{fields.caption}}"
+            fields:
+              - {name: photo, label: Photo, widget: image}
+              - {name: caption, label: Caption, widget: string, required: false}
+  - name: pages
+    label: Pages
+    files:
+      - name: pages
+        label: Home, About, Academics and Admissions text
+        file: content/pages.json
+        fields:
+          - {name: home_intro, label: Home page text, widget: text}
+          - {name: about_text, label: About page text, widget: text}
+          - {name: headmistress, label: Headmistress name, widget: string}
+          - {name: headmistress_message, label: Headmistress message, widget: text}
+          - {name: academics_text, label: Academics text, widget: text}
+          - {name: admissions_text, label: Admissions text, widget: text}
+          - {name: requirements, label: Admission requirements, widget: list, field: {name: item, label: Requirement, widget: string}}
+  - name: boarding
+    label: Boarding
+    files:
+      - name: boarding
+        label: Boarding
+        file: content/boarding.json
+        fields:
+          - {name: intro, label: Boarding text, widget: text}
+          - {name: fees, label: Boarding fees, widget: text}
+          - {name: bring, label: What to bring, widget: list, field: {name: item, label: Item, widget: string}}
+          - {name: visiting_days, label: Visiting days, widget: text}
